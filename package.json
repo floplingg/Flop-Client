@@ -1,0 +1,60 @@
+{
+  "name": "flop-client",
+  "productName": "Flop Client",
+  "version": "0.1.0",
+  "description": "A fast Minecraft launcher with instances and Modrinth content.",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win",
+    "dist:mac": "electron-builder --mac"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "extract-zip": "^2.0.1",
+    "minecraft-launcher-core": "^3.18.0",
+    "tar": "^7.4.0"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.0"
+  },
+  "build": {
+    "appId": "com.flopclient.launcher",
+    "productName": "Flop Client",
+    "files": [
+      "main.js",
+      "preload.js",
+      "config.json",
+      "backend/**",
+      "ui/**",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.png"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icon.png",
+      "category": "public.app-category.games"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "allowScripts": {
+    "electron@33.4.11": true
+  }
+}

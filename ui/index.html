@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'none'">
+<title>Flop Client</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Tinos:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5fd394"/><stop offset="1" stop-color="#1f6e46"/></linearGradient>
+  <symbol id="tree" viewBox="0 0 64 64">
+    <polygon points="32,6 34.4,11.2 40,11.6 35.7,15.1 37.1,20.6 32,17.6 26.9,20.6 28.3,15.1 24,11.6 29.6,11.2" fill="#f0c869"/>
+    <polygon points="32,16 44,30 38,30 49,42 41,42 54,55 10,55 23,42 15,42 26,30 20,30" fill="url(#tg)"/>
+    <rect x="28" y="55" width="8" height="6" rx="1" fill="#7a4a2a"/>
+    <circle cx="27" cy="34" r="2" fill="#e0485c"/><circle cx="38" cy="45" r="2" fill="#f0c869"/>
+    <circle cx="24" cy="49" r="2" fill="#e0485c"/><circle cx="41" cy="51" r="1.8" fill="#9fd8ff"/><circle cx="34" cy="27" r="1.6" fill="#9fd8ff"/>
+  </symbol></defs>
+</svg>
+<canvas id="snow" aria-hidden="true"></canvas>
+
+<div class="signin" id="signin" hidden>
+  <div class="art">
+    <canvas id="signScene" aria-hidden="true"></canvas>
+    <svg class="big-logo" aria-label="Flop Client logo"><use href="#tree"/></svg>
+    <span class="eyebrow">Minecraft launcher</span>
+    <h1>Flop <em>Client</em></h1>
+    <p>Instances, Modrinth mods and shaders, built for speed.</p>
+  </div>
+  <div class="panel"><div class="card" id="signCard"></div></div>
+</div>
+
+<div class="app">
+  <aside class="rail">
+    <div class="brand"><svg class="logo" aria-label="Flop logo"><use href="#tree"/></svg><div><b>Flop</b><span id="ver">CLIENT</span></div></div>
+    <nav aria-label="Sections">
+      <button data-go="play"><i>01</i>Play</button>
+      <button data-go="library"><i>02</i>Library</button>
+      <button data-go="browse"><i>03</i>Browse content</button>
+      <button data-go="packs"><i>04</i>Flop packs</button>
+      <button data-go="settings"><i>05</i>Settings</button>
+    </nav>
+    <div class="rhead"><span>Instances</span><span id="instCount"></span></div>
+    <div class="rlist" id="rlist"></div>
+    <button class="addinst" data-addinst><span class="plus">+</span>Add instance</button>
+    <div class="account"><div class="avatar"></div><div class="acct-lines"><b id="accName">—</b><small id="accSub"></small></div></div>
+  </aside>
+
+  <main>
+    <div class="banner" id="msBanner" hidden><p><b>Link your Minecraft account to play.</b> You can browse and set up instances without it.</p><button class="btn primary" data-mslink>Link Microsoft account</button></div>
+    <div class="view" id="v-play"></div>
+    <div class="view" id="v-library" hidden></div>
+    <div class="view" id="v-instance" hidden></div>
+    <div class="view" id="v-browse" hidden></div>
+    <div class="view" id="v-packs" hidden></div>
+    <div class="view" id="v-settings" hidden></div>
+  </main>
+</div>
+
+<div class="overlay" id="modal" hidden role="dialog" aria-modal="true"><div class="gui modal" id="modalBody"></div></div>
+<div class="taskbar" id="taskbar" hidden><span class="spinner"></span><span id="taskText"></span></div>
+<div class="toast" id="toast" hidden role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
